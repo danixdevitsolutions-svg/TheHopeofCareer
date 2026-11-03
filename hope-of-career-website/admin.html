@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#292157">
+  <title>Website Control Panel | The Hope of Career Institute</title>
+  <link rel="icon" href="assets/brand/hope-career-logo.png">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/cms-core.js" defer></script>
+  <script src="assets/js/admin.js" defer></script>
+</head>
+<body data-page="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <img src="assets/brand/hope-career-logo.png" alt="">
+        <span><strong>Hope of Career</strong><small>Website control panel</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Control panel">
+        <button class="side-link active" type="button" data-view="dashboard"><span class="nav-icon">⌂</span> Dashboard</button>
+        <button class="side-link" type="button" data-view="pages"><span class="nav-icon">▤</span> Website pages <span class="side-count">8</span></button>
+        <button class="side-link" type="button" data-view="announcements"><span class="nav-icon">◷</span> Announcements <span class="side-count" id="navAnnouncements">0</span></button>
+        <button class="side-link" type="button" data-view="gallery"><span class="nav-icon">▧</span> Gallery <span class="side-count" id="navGallery">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="storage-status"><span class="status-pulse"></span><span><strong>Browser storage</strong><small>Local device mode</small></span></div>
+        <a class="side-home" href="index.html">↗ <span>Open website</span></a>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="crumb">HOPE OF CAREER <span>/</span> <strong id="viewCrumb">Dashboard</strong></p>
+          <h1 id="viewTitle">Welcome back</h1>
+        </div>
+        <div class="top-actions">
+          <span class="local-badge"><i></i> Local changes</span>
+          <button class="icon-button" id="backupQuick" type="button" aria-label="Download backup" title="Download backup">↓</button>
+          <div class="avatar" aria-label="Administrator">HC</div>
+        </div>
+      </header>
+
+      <section class="view active" id="view-dashboard" aria-labelledby="viewTitle">
+        <div class="welcome-card">
+          <div><p class="eyebrow">SITE OVERVIEW</p><h2>Manage your website content</h2><p>Edit page copy, publish institute updates and add photos or videos to your gallery.</p></div>
+          <div class="welcome-mark" aria-hidden="true">✦</div>
+          <div class="welcome-actions">
+            <button class="button button-white" type="button" data-go="announcements">＋ New announcement</button>
+            <button class="button button-glass" type="button" data-go="gallery">＋ Add gallery media</button>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon purple">▤</div><div><span>Website pages</span><strong>8</strong><small>Ready to manage</small></div></article>
+          <article class="stat-card"><div class="stat-icon blue">◷</div><div><span>Published updates</span><strong id="statAnnouncements">0</strong><small>Live announcements</small></div></article>
+          <article class="stat-card"><div class="stat-icon coral">▧</div><div><span>Gallery posts</span><strong id="statGallery">0</strong><small>Published photos &amp; videos</small></div></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><span>Content changes</span><strong id="statChanges">0</strong><small>Recorded in this browser</small></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="panel-card activity-card">
+            <div class="panel-heading"><div><p class="eyebrow">RECENT WORK</p><h2>Activity log</h2></div><button class="text-button" type="button" data-go="activity">View all <span>→</span></button></div>
+            <div id="dashboardActivity" class="activity-list"></div>
+          </section>
+          <section class="panel-card quick-card">
+            <div class="panel-heading"><div><p class="eyebrow">SHORTCUTS</p><h2>Quick actions</h2></div></div>
+            <button class="quick-action" type="button" data-go="pages"><span class="quick-action-icon">T</span><span><strong>Edit a page</strong><small>Update headings, paragraphs or images</small></span><b>→</b></button>
+            <button class="quick-action" type="button" data-go="announcements"><span class="quick-action-icon blue">N</span><span><strong>Post an announcement</strong><small>Set the date and publishing time</small></span><b>→</b></button>
+            <button class="quick-action" type="button" data-go="gallery"><span class="quick-action-icon coral">▧</span><span><strong>Update the gallery</strong><small>Add photos and videos with details</small></span><b>→</b></button>
+          </section>
+        </div>
+        <div class="notice-banner"><span class="notice-icon">i</span><p><strong>Important: local browser mode.</strong> These edits are saved on this device only. They do not update the live website for other visitors, and this static panel has no secure admin login. Use backup/restore to move content; shared publishing needs a server, database and authentication.</p><button type="button" class="notice-close" aria-label="Dismiss" data-dismiss-notice>×</button></div>
+      </section>
+
+      <section class="view" id="view-pages" aria-label="Manage website pages">
+        <div class="section-intro"><div><p class="eyebrow">CONTENT MANAGEMENT</p><h2>Edit any page</h2><p>Choose a page, then select a heading, paragraph or image. You can also add a new section or hide an existing section.</p></div><a class="button button-outline" href="index.html" target="_blank" rel="noopener">Preview website ↗</a></div>
+        <div class="page-editor-layout">
+          <section class="panel-card page-browser">
+            <label class="field-label" for="pageSelect">Select page</label>
+            <select id="pageSelect" class="control"></select>
+            <div class="list-heading"><strong>Page content</strong><span id="contentCount">0 items</span></div>
+            <div id="contentList" class="content-list"><div class="loading">Page content loading…</div></div>
+          </section>
+          <section class="panel-card edit-card" id="itemEditor">
+            <div class="empty-editor"><span class="empty-editor-icon">✎</span><h3>Select an item to edit</h3><p>Pick a page item from the list to change its text or replace an image.</p></div>
+          </section>
+        </div>
+        <div class="section-tools-grid">
+          <section class="panel-card">
+            <div class="panel-heading"><div><p class="eyebrow">PAGE STRUCTURE</p><h2>Sections on this page</h2></div></div>
+            <div id="sectionList" class="section-list"></div>
+          </section>
+          <section class="panel-card">
+            <div class="panel-heading"><div><p class="eyebrow">ADD CONTENT</p><h2>Create a new section</h2></div></div>
+            <form id="customSectionForm" class="stack-form">
+              <input type="hidden" name="id">
+              <label>Small label <span class="optional">optional</span><input name="eyebrow" class="control" maxlength="70" placeholder="e.g. Our approach"></label>
+              <label>Section heading<input name="title" class="control" maxlength="160" placeholder="Add a heading"></label>
+              <label>Paragraph<textarea name="body" class="control" rows="4" maxlength="1400" placeholder="Write the section text"></textarea></label>
+              <label>Section image <span class="optional">optional</span><input name="image" class="control file-control" type="file" accept="image/*"></label>
+              <button class="button button-primary" id="saveCustomSection" type="submit">＋ Add section</button>
+              <button class="button button-outline" id="cancelCustomEdit" type="button" hidden>Cancel edit</button>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-announcements" aria-label="Manage announcements">
+        <div class="section-intro"><div><p class="eyebrow">NEWS &amp; UPDATES</p><h2>Announcements</h2><p>Create, edit, schedule or remove dated notices. Published announcements appear on the website's Announcements page.</p></div><button class="button button-primary" id="newAnnouncement" type="button">＋ New announcement</button></div>
+        <div class="content-management-grid">
+          <section class="panel-card"><div class="panel-heading"><div><p class="eyebrow">POSTS</p><h2>All announcements</h2></div><span id="announcementCount" class="count-pill">0</span></div><div id="announcementList" class="managed-list"></div></section>
+          <section class="panel-card form-panel" id="announcementFormPanel">
+            <div class="panel-heading"><div><p class="eyebrow">POST EDITOR</p><h2 id="announcementFormTitle">Create announcement</h2></div></div>
+            <form id="announcementForm" class="stack-form">
+              <input type="hidden" name="id">
+              <label>Announcement title<input name="title" class="control" required maxlength="140" placeholder="e.g. Admissions are now open"></label>
+              <label>Details<textarea name="body" class="control" rows="5" required maxlength="1400" placeholder="Write the announcement"></textarea></label>
+              <div class="form-row"><label>Publish date<input name="date" type="date" class="control" required></label><label>Publish time<input name="time" type="time" class="control" required></label></div>
+              <label>Optional cover image<input name="image" type="file" class="control file-control" accept="image/*"></label>
+              <label>Publishing status<select name="status" class="control"><option value="published">Published</option><option value="draft">Draft</option></select></label>
+              <div class="form-actions"><button class="button button-primary" type="submit">Save announcement</button><button class="button button-outline" type="button" id="cancelAnnouncement">Cancel</button></div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-gallery" aria-label="Manage gallery">
+        <div class="section-intro"><div><p class="eyebrow">PHOTOS &amp; VIDEOS</p><h2>Gallery</h2><p>Upload a photo or video, add a title and a 2–5 line description, then choose when it should appear.</p></div><button class="button button-primary" id="newGalleryItem" type="button">＋ Add media</button></div>
+        <div class="gallery-management-grid">
+          <section class="panel-card"><div class="panel-heading"><div><p class="eyebrow">MEDIA LIBRARY</p><h2>Gallery posts</h2></div><span id="galleryCount" class="count-pill">0</span></div><div id="galleryList" class="managed-list"></div></section>
+          <section class="panel-card form-panel" id="galleryFormPanel">
+            <div class="panel-heading"><div><p class="eyebrow">MEDIA DETAILS</p><h2 id="galleryFormTitle">Add gallery media</h2></div></div>
+            <form id="galleryForm" class="stack-form">
+              <input type="hidden" name="id">
+              <label>Title<input name="title" class="control" required maxlength="140" placeholder="Give this post a title"></label>
+              <label>Description <span class="optional">2–5 lines</span><textarea name="description" class="control" rows="5" required maxlength="700" placeholder="Write one short detail per line&#10;Add 2 to 5 lines"></textarea></label>
+              <div class="form-row"><label>Publish date<input name="date" type="date" class="control" required></label><label>Publish time<input name="time" type="time" class="control" required></label></div>
+              <label>Image or video<input name="media" type="file" class="control file-control" accept="image/*,video/*"></label>
+              <p class="file-hint" id="galleryMediaHint">Choose an image or video file. Uploads are stored in this browser.</p>
+              <label>Publishing status<select name="status" class="control"><option value="published">Published</option><option value="draft">Draft</option></select></label>
+              <div class="form-actions"><button class="button button-primary" type="submit">Save gallery post</button><button class="button button-outline" type="button" id="cancelGallery">Cancel</button></div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-activity" aria-label="Activity log">
+        <div class="section-intro"><div><p class="eyebrow">CHANGE HISTORY</p><h2>Activity log</h2><p>Recent edits and publishing actions saved in this browser.</p></div></div>
+        <section class="panel-card"><div id="fullActivity" class="activity-list"></div></section>
+      </section>
+
+      <section class="view" id="view-backup" aria-label="Backup and restore">
+        <div class="section-intro"><div><p class="eyebrow">PORTABILITY</p><h2>Backup &amp; restore</h2><p>Export your text, post details and uploaded media into a single backup file.</p></div></div>
+        <section class="panel-card backup-panel">
+          <div class="backup-icon">↓</div><div><h2>Keep a copy of your content</h2><p>Backup files include website edits, announcements, gallery posts and uploaded media. Store the file somewhere safe. Restoring replaces the content currently stored in this browser.</p><div class="backup-actions"><button class="button button-primary" id="downloadBackup" type="button">Download backup</button><label class="button button-outline upload-backup">Restore backup<input id="restoreBackup" type="file" accept="application/json,.json" hidden></label></div></div>
+        </section>
+        <div class="notice-banner backup-warning"><span class="notice-icon">!</span><p><strong>Static website limitation.</strong> A backup helps move content, but it does not publish changes to everyone. This panel is not protected by a secure login. A shared live CMS needs a server, database and administrator authentication.</p></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="confirm-dialog" id="confirmDialog">
+    <form method="dialog"><div class="dialog-mark">!</div><h2 id="confirmTitle">Confirm removal</h2><p id="confirmMessage">This item will be removed.</p><div class="form-actions"><button class="button button-danger" id="confirmYes" value="confirm">Delete</button><button class="button button-outline" value="cancel">Cancel</button></div></form>
+  </dialog>
+</body>
+</html>

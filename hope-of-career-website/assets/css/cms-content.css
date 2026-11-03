@@ -1,0 +1,17 @@
+.cms-preserve-lines{white-space:pre-line}
+.cms-custom-section .cms-section-image{max-width:min(100%,620px);max-height:460px;margin-top:22px;border-radius:5px 30px 5px 5px;object-fit:cover;box-shadow:0 14px 40px #29215712}
+.cms-post-section{background:#f0eee7}
+.cms-feed-heading{margin:0 0 22px;color:var(--ink);font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-.05em}
+.cms-post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cms-post-card{overflow:hidden;padding:21px;border:1px solid var(--line);border-radius:3px 25px 3px 3px;background:var(--white)}
+.cms-post-image{width:100%;max-height:260px;margin:-21px -21px 17px;width:calc(100% + 42px);object-fit:cover}
+.cms-post-date{display:block;margin-bottom:8px;color:var(--purple);font-size:10px;font-weight:800;letter-spacing:.04em}
+.cms-post-title{margin:0 0 9px;color:var(--ink);font-size:20px;line-height:1.25}
+.cms-post-body{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.cms-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.cms-gallery-card{overflow:hidden;padding:12px;border:1px solid var(--line);border-radius:3px 23px 3px 3px;background:var(--white)}
+.cms-gallery-media{display:block;width:100%;height:200px;margin-bottom:12px;border-radius:3px 16px 3px 3px;background:#eeebf4;object-fit:cover}
+.cms-gallery-title{margin:0 0 5px;color:var(--ink);font-size:16px}
+.cms-gallery-description{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+@media(max-width:760px){.cms-post-grid{grid-template-columns:1fr}.cms-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.cms-gallery-grid{grid-template-columns:1fr}.cms-gallery-media{height:220px}}
